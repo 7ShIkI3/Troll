@@ -15,7 +15,7 @@ def download_and_play():
 
     # Téléchargement discret du fichier audio
     if not os.path.exists(sound_file):
-        url = "https://github.com/7ShIkI3/Troll/blob/main/bruitage%20moustique.wav"  # Assurez-vous d'avoir un .wav
+        url = "https://github.com/7ShIkI3/Troll/blob/main/.wav/bruitage%20moustique.wav"  # Assurez-vous d'avoir un .wav
         urllib.request.urlretrieve(url, sound_file)
 
     while True:
